@@ -36,6 +36,21 @@ module.exports = (formName, path, index) => ({
                         index: `$data.${ index }`,
                     },
                 },
+                {
+                    action: 'list',
+                    arguments: {
+                        type: 'update',
+                        name: 'idea-list',
+                        item: '$data.responses.0.value',
+                        index: `$data.${ index }`,
+                    },
+                },
+                {
+                    action: 'rerender',
+                    arguments: {
+                        name: 'ideaPage',
+                    },
+                },
             ],
         },
     },

@@ -1,15 +1,15 @@
 const { UpdateSchema } = require('../schema');
 
-const Update = {
+const Delete = {
     type: 'mutation',
-    name: 'Update',
+    name: 'Delete',
     spec: {
         use: 'v2',
-        arguments: UpdateSchema(['_id', 'title', 'description', 'descriptionExc'], ['_id']),
+        arguments: UpdateSchema(['_id'], ['_id']),
         flows: [
             {
                 use: 'service',
-                name: 'updateOne',
+                name: 'deleteOne',
                 service: 'mongodb',
                 method: 'UpdateOne',
                 spec: {
@@ -17,7 +17,11 @@ const Update = {
                         _id: '$data.arguments._id',
                     },
                     update: {
-                        $set: '$data.arguments',
+                        $set: {
+                            isDeleted: true,
+                            updatedAt: '$data.arguments.updatedAt',
+                            updatedById: '$data.arguments.updatedById',
+                        },
                     },
                     options: {
                         returnDocument: 'after',
@@ -26,10 +30,10 @@ const Update = {
             },
         ],
         result: {
-            value: '$data.updateOne',
+            value: '$data.deleteOne',
         },
         document: '$data',
     },
 };
 
-module.exports = Update;
+module.exports = Delete;

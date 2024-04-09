@@ -5,9 +5,16 @@ const Fields = {
         parse: 'objectId',
     },
     /* !!! add fields here !!! */
+    ideaId: {
+        type: 'string',
+    },
     comment: {
         type: 'string',
     },
+    creator: {
+        type: 'string',
+    },
+
     createdAt: {
         type: 'string',
         format: 'date-time',

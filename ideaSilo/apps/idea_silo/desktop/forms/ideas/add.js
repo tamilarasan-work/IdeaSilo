@@ -27,6 +27,15 @@ module.exports = (formName) => ({
                     },
                 },
                 {
+                    action: 'list',
+                    arguments: {
+                        type: 'add',
+                        name: 'idea-list',
+                        item: '$data.responses.0.value',
+                        atBeginning: true,
+                    },
+                },
+                {
                     action: 'searchCount',
                     arguments: {
                         type: 'add',

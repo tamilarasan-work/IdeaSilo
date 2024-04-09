@@ -10,14 +10,39 @@ module.exports = (formName) => ([
             },
         },
     },
+    // {
+    //     TextArea: {
+    //         props: {
+    //             formName,
+    //             name: 'description',
+    //             label: 'Description',
+    //             required: true,
+    //             placeholder: 'Idea description',
+    //         },
+    //     },
+    // },
     {
-        TextArea: {
+        WYSIWYG: {
             props: {
                 formName,
                 name: 'description',
                 label: 'Description',
                 required: true,
                 placeholder: 'Idea description',
+                toolBar: [
+                    ['link'],
+                    [
+                        {
+                            indent: '-1',
+                        },
+                        {
+                            indent: '+1',
+                        },
+                    ],
+                    [
+                        { direction: 'rtl' },
+                    ],
+                ],
             },
         },
     },

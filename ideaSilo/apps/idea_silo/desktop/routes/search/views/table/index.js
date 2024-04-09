@@ -5,6 +5,10 @@ module.exports = [
         RTable: {
             props: {
                 name: 'idea-table',
+                styles: {
+                    marginTop: '10px',
+
+                },
                 columns,
                 onClick: {
                     action: 'navigate',

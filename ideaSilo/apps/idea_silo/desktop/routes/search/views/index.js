@@ -1,3 +1,4 @@
 const table = require('./table');
+const card = require('./card');
 
-module.exports = { table };
+module.exports = { table, card };

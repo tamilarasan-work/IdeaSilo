@@ -1,5 +1,5 @@
 module.exports = {
-    table: {
+    card: {
         from: 'API',
         request: {
             url: 'https://api.hub365.work/graph',
@@ -18,6 +18,10 @@ module.exports = {
                     _id: true,
                     title: true,
                     description: true,
+                    creator: true,
+                    creatorId: true,
+                    createdAt: true,
+                    updatedAt: true,
                 },
             },
         },
@@ -27,4 +31,6 @@ module.exports = {
         totalCount: '$data.request.value.page_info.total_count',
         totalPages: '$data.request.value.page_info.total_pages',
     },
+    table: 'card',
+
 };

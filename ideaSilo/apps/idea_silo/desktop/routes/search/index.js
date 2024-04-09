@@ -1,4 +1,5 @@
 const table = require('./views/table');
+const card = require('./views/card');
 const data = require('./data');
 const header = require('./header');
 
@@ -20,33 +21,67 @@ module.exports = {
             },
             layout: [
                 {
-                    Search: {
-                        key: 'idea-search',
+                    ContainerFluid: {
                         props: {
-                            name: 'idea-search',
-                            data,
-                            header,
-                            default: {
-                                view: 'table',
-                            },
-                            views: [
-                                {
-                                    name: 'table',
-                                    icon: 'list-hub',
-                                    iconProps: {
-                                        type: 'custom',
+                            layout: [{
+                                Search: {
+                                    key: 'idea-search',
+                                    props: {
+                                        name: 'idea-search',
+                                        data,
+                                        header,
+                                        default: {
+                                            view: 'card',
+                                            sortBy: ['createdAt:desc'],
+                                        },
+                                        sortBy: [
+                                            {
+                                                label: 'title',
+                                                value: 'title:asc',
+                                            },
+                                            {
+                                                label: 'Created Asc',
+                                                value: 'createdAt:asc',
+                                            },
+                                            {
+                                                label: 'Created Desc',
+                                                value: 'createdAt:desc',
+                                            },
+                                            {
+                                                label: 'Updated Desc',
+                                                value: 'updatedAt:desc',
+                                            },
+                                            {
+                                                label: 'Updated Asc',
+                                                value: 'updatedAt:asc',
+                                            },
+                                        ],
+                                        views: [
+                                            {
+                                                name: 'card',
+                                                icon: 'id-card',
+                                            },
+                                            {
+                                                name: 'table',
+                                                icon: 'table',
+
+                                            },
+
+                                        ],
+                                        show: {
+                                            filters: false,
+                                        },
+                                        layout: {
+                                            table,
+                                            card,
+                                        },
                                     },
                                 },
-                            ],
-                            show: {
-                                filters: false,
-                            },
-                            layout: {
-                                table,
-                            },
+                            }],
                         },
                     },
                 },
+
             ],
         },
     },

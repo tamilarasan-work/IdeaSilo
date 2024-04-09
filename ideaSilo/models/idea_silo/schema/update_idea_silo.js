@@ -1,6 +1,6 @@
 const Fields = require('./fields');
 
-const UpdateIdeaSilo = (fields = ['_id', 'title', 'description'], required = ['_id']) => ({
+const UpdateIdeaSilo = (fields = ['_id', 'title', 'description', 'descriptionExc'], required = ['_id']) => ({
     type: 'object',
     required,
     additionalProperties: false,

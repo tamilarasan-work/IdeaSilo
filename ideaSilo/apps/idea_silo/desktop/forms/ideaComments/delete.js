@@ -6,11 +6,11 @@ module.exports = (mutation, path, index) => ({
             method: 'POST',
             withCredentials: true,
             data: {
-                model: '65fbf5c2f7b0893c2aee9031',
+                model: '65fbf5c7f7b0893c2aee9071',
                 type: 'mutation',
                 mutation,
                 arguments: {
-                    _id: `$data.${ path }._id`,
+                    _id: `$data.${ path }`,
 
                 },
             },
@@ -20,22 +20,7 @@ module.exports = (mutation, path, index) => ({
                 action: 'list',
                 arguments: {
                     type: 'remove',
-                    name: 'idea-table',
-                    index: `$data.${ index }`,
-                },
-            },
-            {
-                action: 'searchCount',
-                arguments: {
-                    type: 'subtract',
-                    name: 'idea-search',
-                },
-            },
-            {
-                action: 'list',
-                arguments: {
-                    type: 'remove',
-                    name: 'idea-list',
+                    name: 'commentList',
                     index: `$data.${ index }`,
                 },
             },

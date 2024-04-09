@@ -1,10 +1,10 @@
-const { title, description } = require('./ideaPage');
+const { title, description, comments } = require('./ideaPage');
 
 module.exports = {
     Page: {
         props: {
             header: {
-                type: 'primary',
+
                 back: {
                     name: 'Back',
                     path: '/`$data.router.params.app`',
@@ -31,53 +31,29 @@ module.exports = {
                                             _id: true,
                                             title: true,
                                             description: true,
+                                            creator: true,
                                         },
                                     },
                                 },
                             },
+
+                        },
+                        rerender: {
+                            name: 'ideaPage',
                         },
                         props: {
                             drillDown: {
                                 idea: '$data.ideaDetails.value',
                             },
                             layout: [
-                                // {
-                                //     Card: {
-                                //         props: {
-
-                                //             layout: [
-                                //                 {
-                                //                     Stack: {
-                                //                         props: {
-                                //                             layout: [
-                                //                                 {
-                                //                                     Text: {
-                                //                                         props: {
-                                //                                             children: '$data.root.root.root.idea.title',
-                                //                                         },
-                                //                                     },
-                                //                                 },
-                                //                                 {
-                                //                                     Text: {
-                                //                                         props: {
-                                //                                             children: '$data.root.root.root.idea.description',
-                                //                                         },
-                                //                                     },
-                                //                                 },
-                                //                             ],
-                                //                         },
-                                //                     },
-                                //                 },
-                                //             ],
-                                //         },
-                                //     },
-                                // },
                                 {
                                     Stack: {
                                         props: {
                                             layout: [
-                                                title('root.root.idea'),
+                                                title('root.root.idea', 'root.root.index'),
                                                 description('root.root.idea'),
+                                                comments,
+
                                             ],
                                         },
                                     },

@@ -1,24 +1,20 @@
 module.exports = (mutation, id) => ([
     {
-
         url: 'https://api.hub365.work/graph',
         method: 'POST',
         withCredentials: true,
         data: {
-            model: '65fbf5c2f7b0893c2aee9031',
+            model: '65fbf5c7f7b0893c2aee9071',
             type: 'mutation',
             mutation,
             arguments: id ? {
                 _id: `$data.${ id }`,
-                title: '$data.title.value',
-                description: '$data.description.value',
-
+                comment: '$data.comment.value',
             } : {
-                title: '$data.title.value',
-                description: '$data.description.value',
+                ideaId: '$data.router.params.idea',
+                comment: '$data.comment.value',
                 creator: '$data.user.name.first',
             },
-
         },
     },
 ]);

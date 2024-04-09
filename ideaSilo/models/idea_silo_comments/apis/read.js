@@ -31,7 +31,7 @@ const Read = {
                         isDeleted: false,
                         $or: [
                             {
-                                name: {
+                                ideaId: {
                                     $regex: '$data.arguments.query',
                                     $options: 'i',
                                 },

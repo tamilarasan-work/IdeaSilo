@@ -11,6 +11,16 @@ const Fields = {
     description: {
         type: 'string',
     },
+    descriptionExc: {
+        type: 'string',
+        excerpt: {
+            length: -1,
+            field: 'description',
+        },
+    },
+    creator: {
+        type: 'string',
+    },
     createdAt: {
         type: 'string',
         format: 'date-time',
