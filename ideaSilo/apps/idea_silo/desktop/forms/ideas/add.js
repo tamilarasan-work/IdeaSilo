@@ -23,8 +23,8 @@ module.exports = (formName) => ({
                     type: 'String',
                     required: true,
                     default: {
-                        label: 'In progress',
-                        value: 'In progress',
+                        label: 'Draft',
+                        value: 'Draft',
                     },
                 },
             },

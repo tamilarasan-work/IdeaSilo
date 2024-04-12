@@ -79,28 +79,7 @@ module.exports = {
 
                                         ],
                                         filters: [
-                                            // {
-                                            //     type: 'Multiple',
-                                            //     name: 'creator',
-                                            //     label: 'Created By',
-                                            //     search: true,
-                                            //     data: {
-                                            //         from: 'STATIC',
-                                            //         value: [
-                                            //             {
-                                            //                 label: 'Tamilarasan',
-                                            //                 value: 'Tamilarasan',
-                                            //                 key: 'Tamilarasan',
-                                            //             },
-                                            //             {
-                                            //                 label: 'Bhuvanesh',
-                                            //                 value: 'Bhuvanesh',
-                                            //                 key: 'Bhuvanesh',
-                                            //             },
 
-                                            //         ],
-                                            //     },
-                                            // },
                                             {
                                                 type: 'Multiple',
                                                 name: 'status',
@@ -111,13 +90,17 @@ module.exports = {
                                                     from: 'STATIC',
                                                     value: [
                                                         {
-                                                            label: 'Completed',
-                                                            value: 'Completed',
-
+                                                            label: 'Draft',
+                                                            value: 'Draft',
                                                         },
                                                         {
                                                             label: 'In Progress',
                                                             value: 'In progress',
+                                                        },
+                                                        {
+                                                            label: 'Completed',
+                                                            value: 'Completed',
+
                                                         },
                                                     ],
                                                 },
@@ -133,7 +116,7 @@ module.exports = {
                                             filter: true,
                                         },
                                         order: [
-                                            [['search', 'filters'], ['count', 'sortBy', 'views', 'right']],
+                                            [['filters', 'search'], ['count', 'sortBy', 'views', 'right']],
                                             [],
 
                                         ],

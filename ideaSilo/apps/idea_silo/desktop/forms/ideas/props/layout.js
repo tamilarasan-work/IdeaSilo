@@ -1,18 +1,63 @@
 module.exports = (formName) => ([
     {
-        TextInput: {
+        Stack: {
             props: {
-                formName,
-                name: 'title',
-                label: 'Title',
-                required: true,
-                placeholder: 'Idea title',
+                direction: 'row',
+                layout: [
+                    {
+                        TextInput: {
+                            props: {
+                                styles: {
+                                    width: '30%',
+
+                                },
+                                formName,
+                                name: 'title',
+                                label: 'Title',
+                                required: true,
+                                placeholder: 'Idea title',
+                            },
+                        },
+                    },
+                    {
+                        Select: {
+                            props: {
+                                styles: {
+                                    width: '20%',
+                                },
+                                formName,
+                                name: 'status',
+                                label: 'Status',
+                                required: true,
+                                none: false,
+                                data: [
+                                    {
+                                        label: 'Draft',
+                                        value: 'Draft',
+                                    },
+                                    {
+                                        label: 'In progress',
+                                        value: 'In progress',
+                                    },
+                                    {
+                                        label: 'Completed',
+                                        value: 'Completed',
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                ],
             },
         },
     },
+
     {
         WYSIWYG: {
             props: {
+                styles: {
+                    width: '50.5%',
+                },
                 formName,
                 name: 'description',
                 label: 'Description',
@@ -35,30 +80,7 @@ module.exports = (formName) => ([
             },
         },
     },
-    {
-        Select: {
-            props: {
-                styles: {
-                    width: '20%',
-                },
-                formName,
-                name: 'status',
-                label: 'Status',
-                required: true,
-                none: false,
-                data: [
-                    {
-                        label: 'In progress',
-                        value: 'In progress',
-                    },
-                    {
-                        label: 'Completed',
-                        value: 'Completed',
-                    },
-                ],
-            },
-        },
-    },
+
     // {
     //     Dropzone: {
     //         condition: {

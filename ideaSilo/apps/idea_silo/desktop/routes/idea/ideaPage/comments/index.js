@@ -11,6 +11,7 @@ module.exports = {
                         props: {
                             styles: {
                                 marginTop: '20px',
+                                marginBottom: '10px',
                             },
                             children: 'Comments',
                         },
@@ -19,9 +20,10 @@ module.exports = {
                 comments('root.root.root.idea'),
                 {
                     Stack: {
-
                         props: {
-
+                            styles: {
+                                marginBottom: '50px',
+                            },
                             layout: [{
                                 Card: {
                                     props: {

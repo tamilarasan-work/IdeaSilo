@@ -21,10 +21,6 @@ module.exports = (formName, path, index) => ({
                 status: {
                     type: 'String',
                     required: true,
-                    // default: {
-                    //     label: `$data.${ path }.select`,
-                    //     value: `$data.${ path }.select`,
-                    // },
                 },
             },
             layout: props.layout(formName, `root.${ path }`),

@@ -36,6 +36,7 @@ module.exports = () => ({
                                                 {
                                                     FormButton: {
                                                         props: {
+                                                            icon: 'plus',
                                                             children: 'Add',
                                                             formName: 'addComment',
                                                             onClick: [
