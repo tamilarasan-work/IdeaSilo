@@ -5,7 +5,7 @@ const Update = {
     name: 'Update',
     spec: {
         use: 'v2',
-        arguments: UpdateSchema(['_id', 'title', 'description', 'descriptionExc'], ['_id']),
+        arguments: UpdateSchema(['_id', 'title', 'description', 'descriptionExc', 'status', 'fileId', 'fileName'], ['_id']),
         flows: [
             {
                 use: 'service',

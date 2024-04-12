@@ -18,7 +18,16 @@ const Fields = {
             field: 'description',
         },
     },
+    status: {
+        type: 'string',
+    },
     creator: {
+        type: 'string',
+    },
+    fileId: {
+        type: 'string',
+    },
+    fileName: {
         type: 'string',
     },
     createdAt: {

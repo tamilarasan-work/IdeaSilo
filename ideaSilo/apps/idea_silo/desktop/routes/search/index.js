@@ -27,17 +27,27 @@ module.exports = {
                                 Search: {
                                     key: 'idea-search',
                                     props: {
+                                        styles: {
+                                            padding: '0 20px',
+                                        },
+
                                         name: 'idea-search',
                                         data,
                                         header,
+
                                         default: {
                                             view: 'card',
                                             sortBy: ['createdAt:desc'],
+
                                         },
                                         sortBy: [
                                             {
-                                                label: 'title',
+                                                label: 'title(A-Z)',
                                                 value: 'title:asc',
+                                            },
+                                            {
+                                                label: 'title(Z-A)',
+                                                value: 'title:desc',
                                             },
                                             {
                                                 label: 'Created Asc',
@@ -68,13 +78,67 @@ module.exports = {
                                             },
 
                                         ],
-                                        show: {
-                                            filters: false,
-                                        },
+                                        filters: [
+                                            // {
+                                            //     type: 'Multiple',
+                                            //     name: 'creator',
+                                            //     label: 'Created By',
+                                            //     search: true,
+                                            //     data: {
+                                            //         from: 'STATIC',
+                                            //         value: [
+                                            //             {
+                                            //                 label: 'Tamilarasan',
+                                            //                 value: 'Tamilarasan',
+                                            //                 key: 'Tamilarasan',
+                                            //             },
+                                            //             {
+                                            //                 label: 'Bhuvanesh',
+                                            //                 value: 'Bhuvanesh',
+                                            //                 key: 'Bhuvanesh',
+                                            //             },
+
+                                            //         ],
+                                            //     },
+                                            // },
+                                            {
+                                                type: 'Multiple',
+                                                name: 'status',
+                                                label: 'Status',
+                                                search: false,
+                                                defaultOpen: true,
+                                                data: {
+                                                    from: 'STATIC',
+                                                    value: [
+                                                        {
+                                                            label: 'Completed',
+                                                            value: 'Completed',
+
+                                                        },
+                                                        {
+                                                            label: 'In Progress',
+                                                            value: 'In progress',
+                                                        },
+                                                    ],
+                                                },
+                                            },
+
+                                        ],
+
                                         layout: {
                                             table,
                                             card,
                                         },
+                                        show: {
+                                            filter: true,
+                                        },
+                                        order: [
+                                            [['search', 'filters'], ['count', 'sortBy', 'views', 'right']],
+                                            [],
+
+                                        ],
+
+                                        filterType: 'overlay',
                                     },
                                 },
                             }],

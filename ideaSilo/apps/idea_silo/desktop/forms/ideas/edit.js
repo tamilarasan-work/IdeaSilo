@@ -4,6 +4,11 @@ module.exports = (formName, path, index) => ({
     Form: {
         props: {
             name: formName,
+            styles: {
+                '>*': {
+                    marginBottom: '20px',
+                },
+            },
             fields: {
                 title: {
                     type: 'String',
@@ -13,11 +18,23 @@ module.exports = (formName, path, index) => ({
                     type: 'String',
                     required: true,
                 },
+                status: {
+                    type: 'String',
+                    required: true,
+                    // default: {
+                    //     label: `$data.${ path }.select`,
+                    //     value: `$data.${ path }.select`,
+                    // },
+                },
             },
-            layout: props.layout(formName),
+            layout: props.layout(formName, `root.${ path }`),
             values: {
                 title: { value: `$data.${ path }.title` },
                 description: { value: `$data.${ path }.description` },
+                status: {
+                    label: `$data.${ path }.status`,
+                    value: `$data.${ path }.status`,
+                },
             },
             submit: props.submit('Update', `${ path }._id`),
             onSuccess: [

@@ -4,6 +4,12 @@ module.exports = (formName) => ({
     Form: {
         props: {
             name: formName,
+            styles: {
+                '>*': {
+                    marginBottom: '20px',
+                },
+            },
+
             fields: {
                 title: {
                     type: 'String',
@@ -12,6 +18,14 @@ module.exports = (formName) => ({
                 description: {
                     type: 'String',
                     required: true,
+                },
+                status: {
+                    type: 'String',
+                    required: true,
+                    default: {
+                        label: 'In progress',
+                        value: 'In progress',
+                    },
                 },
             },
             layout: props.layout(formName),

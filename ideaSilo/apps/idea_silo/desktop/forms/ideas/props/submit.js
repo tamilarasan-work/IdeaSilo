@@ -12,11 +12,13 @@ module.exports = (mutation, id) => ([
                 _id: `$data.${ id }`,
                 title: '$data.title.value',
                 description: '$data.description.value',
+                status: '$data.status.value',
 
             } : {
                 title: '$data.title.value',
                 description: '$data.description.value',
                 creator: '$data.user.name.first',
+                status: '$data.status.value',
             },
 
         },

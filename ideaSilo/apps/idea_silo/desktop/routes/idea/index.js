@@ -13,6 +13,7 @@ module.exports = {
             layout: [
                 {
                     ContainerFluid: {
+
                         data: {
                             ideaDetails: {
                                 from: 'API',
@@ -32,6 +33,9 @@ module.exports = {
                                             title: true,
                                             description: true,
                                             creator: true,
+                                            status: true,
+                                            fileId: true,
+                                            fileName: true,
                                         },
                                     },
                                 },
@@ -42,6 +46,11 @@ module.exports = {
                             name: 'ideaPage',
                         },
                         props: {
+                            styles: {
+                                marginTop: '40px',
+                                padding: '0 20px 0 20px',
+
+                            },
                             drillDown: {
                                 idea: '$data.ideaDetails.value',
                             },
@@ -49,6 +58,11 @@ module.exports = {
                                 {
                                     Stack: {
                                         props: {
+                                            styles: {
+                                                '>*': {
+                                                    marginBottom: '10px',
+                                                },
+                                            },
                                             layout: [
                                                 title('root.root.idea', 'root.root.index'),
                                                 description('root.root.idea'),

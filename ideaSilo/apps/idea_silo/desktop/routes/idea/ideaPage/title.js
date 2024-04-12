@@ -1,4 +1,5 @@
 const forms = require('../../../forms');
+const modal = require('./modal');
 
 module.exports = (path, index) => ({
     Stack: {
@@ -10,73 +11,147 @@ module.exports = (path, index) => ({
             },
             layout: [
                 {
-                    H2: {
+                    Stack: {
                         props: {
-                            children: '$data.root.idea.title',
+                            direction: 'row',
+
+                            layout: [
+                                {
+                                    H2: {
+                                        props: {
+
+                                            children: '$data.root.root.idea.title',
+                                        },
+                                    },
+                                },
+                                {
+                                    H5: {
+                                        props: {
+                                            styles: {
+                                                color: 'gray',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                            },
+                                            children: '(`$data.root.root.idea.status`)',
+                                        },
+                                    },
+                                },
+                            ],
                         },
                     },
                 },
                 {
-                    TextButton: {
+                    Stack: {
+                        rerender: {
+                            name: 'attachButton',
+                        },
                         props: {
-                            icon: 'edit',
-                            children: 'Edit',
-                            onClick: {
-                                action: 'open',
-                                arguments: {
-                                    element: 'Lightbox',
+                            drillDown: {
+                                fileId: '$data.root.idea.fileId',
+                            },
+                            direction: 'row',
+                            layout: [
+                                {
+                                    TextButton: {
+                                        props: {
+                                            icon: 'edit',
+                                            children: 'Edit',
+                                            onClick: {
+                                                action: 'open',
+                                                arguments: {
+                                                    element: 'Lightbox',
 
-                                    props: {
-                                        title: 'Update Idea',
-                                        position: 'right',
-                                        header: {
-                                            options: [
-                                                {
-                                                    type: 'layout',
-                                                    layout: [
-                                                        {
-                                                            TextButton: {
-                                                                props: {
+                                                    props: {
+                                                        title: 'Update Idea',
+                                                        position: 'right',
+                                                        header: {
+                                                            options: [
+                                                                {
+                                                                    type: 'layout',
+                                                                    layout: [
+                                                                        {
+                                                                            TextButton: {
+                                                                                props: {
 
-                                                                    children: 'Cancel',
-                                                                    onClick: {
-                                                                        action: 'close',
-                                                                        arguments: {
-                                                                            element: 'Lightbox',
+                                                                                    children: 'Cancel',
+                                                                                    onClick: {
+                                                                                        action: 'close',
+                                                                                        arguments: {
+                                                                                            element: 'Lightbox',
+                                                                                        },
+                                                                                    },
+                                                                                },
+                                                                            },
                                                                         },
-                                                                    },
+                                                                        {
+                                                                            FormButton: {
+                                                                                props: {
+                                                                                    children: 'Update',
+                                                                                    formName: 'editIdea',
+                                                                                    onClick: {
+                                                                                        action: 'form',
+                                                                                        arguments: {
+                                                                                            type: 'submit',
+                                                                                            name: 'editIdea',
+                                                                                        },
+                                                                                    },
+                                                                                },
+                                                                            },
+                                                                        },
+                                                                    ],
                                                                 },
-                                                            },
+                                                            ],
                                                         },
+                                                        layout: [
+                                                            forms.ideas.edit('editIdea', `root.root.root.${ path }`, `root.root.root.${ index }`),
+                                                        ],
+
+                                                    },
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                                {
+                                    TextButton: {
+                                        data: {
+                                            name: {
+                                                from: 'RESOLVE',
+                                                value: {
+                                                    __RESOLVE: 'STRING',
+                                                    __PATH: '$data.root',
+                                                    __PIPELINE: [
                                                         {
-                                                            FormButton: {
-                                                                props: {
-                                                                    children: 'Update',
-                                                                    formName: 'editIdea',
-                                                                    onClick: {
-                                                                        action: 'form',
-                                                                        arguments: {
-                                                                            type: 'submit',
-                                                                            name: 'editIdea',
-                                                                        },
-                                                                    },
-                                                                },
+                                                            condition: [{
+                                                                operator: 'notEmpty',
+                                                                values: ['$data.fileId'],
+                                                                return: 'Replace file',
                                                             },
+                                                            'Attach file',
+                                                            ],
                                                         },
                                                     ],
                                                 },
-                                            ],
+                                            },
                                         },
-                                        layout: [
-                                            forms.ideas.edit('editIdea', `root.root.${ path }`, `root.root.${ index }`),
-                                        ],
 
+                                        props: {
+                                            icon: 'paperclip',
+                                            children: '$data.name',
+                                            onClick: {
+                                                action: 'open',
+                                                arguments: modal('root.root.idea'),
+                                            },
+
+                                        },
                                     },
                                 },
-                            },
+
+                            ],
                         },
                     },
                 },
+
             ],
         },
     },
