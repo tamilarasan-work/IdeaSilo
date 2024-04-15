@@ -1,3 +1,5 @@
+const aggs = require('./aggs');
+
 module.exports = {
     card: {
         from: 'API',
@@ -15,6 +17,7 @@ module.exports = {
                     query: '$data.query',
                     sort: '$data.sortBy',
                     filters: '$data.filters',
+                    aggs,
                 },
                 // resolve: {
                 //     _id: true,
@@ -27,6 +30,11 @@ module.exports = {
                 //     updatedAt: true,
                 // },
             },
+        },
+        filtersAvailable: {
+            __RESOLVE: 'OBJECT',
+            __PATH: '$data.request.value.aggs',
+            __DEFAULT: {},
         },
         results: '$data.request.value.values',
         page: '$data.request.value.page_info.page',

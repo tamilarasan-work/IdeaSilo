@@ -2,6 +2,7 @@ const table = require('./views/table');
 const card = require('./views/card');
 const data = require('./data');
 const header = require('./header');
+const filters = require('./filters');
 
 module.exports = {
     Page: {
@@ -78,35 +79,45 @@ module.exports = {
                                             },
 
                                         ],
-                                        filters: [
+                                        filters,
+                                        // [
+                                        //     {
+                                        //         type: 'Multiple',
+                                        //         name: 'status',
+                                        //         label: 'Status',
+                                        //         search: false,
+                                        //         defaultOpen: true,
+                                        //         data: {
+                                        //             from: 'STATIC',
+                                        //             value: [
+                                        //                 {
+                                        //                     label: 'Draft',
+                                        //                     value: 'Draft',
+                                        //                 },
+                                        //                 {
+                                        //                     label: 'In Progress',
+                                        //                     value: 'In progress',
+                                        //                 },
+                                        //                 {
+                                        //                     label: 'Completed',
+                                        //                     value: 'Completed',
 
-                                            {
-                                                type: 'Multiple',
-                                                name: 'status',
-                                                label: 'Status',
-                                                search: false,
-                                                defaultOpen: true,
-                                                data: {
-                                                    from: 'STATIC',
-                                                    value: [
-                                                        {
-                                                            label: 'Draft',
-                                                            value: 'Draft',
-                                                        },
-                                                        {
-                                                            label: 'In Progress',
-                                                            value: 'In progress',
-                                                        },
-                                                        {
-                                                            label: 'Completed',
-                                                            value: 'Completed',
+                                        //                 },
+                                        //             ],
+                                        //         },
+                                        //     },
+                                        //     {
+                                        //         type: 'Multiple',
+                                        //         name: 'creator',
+                                        //         label: 'Creator',
+                                        //         search: true,
+                                        //         availableFilter: 'creator',
+                                        //         data: {
+                                        //             from: 'AGGS',
+                                        //         },
+                                        //     },
 
-                                                        },
-                                                    ],
-                                                },
-                                            },
-
-                                        ],
+                                        // ],
 
                                         layout: {
                                             table,
