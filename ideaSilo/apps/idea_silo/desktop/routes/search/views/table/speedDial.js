@@ -3,6 +3,7 @@ const forms = require('../../../../forms');
 module.exports = (path, index) => ({
     SpeedDial: {
         props: {
+            moreSize: 1,
             list: [
                 {
                     label: 'Edit',
@@ -24,7 +25,6 @@ module.exports = (path, index) => ({
                                                 {
                                                     TextButton: {
                                                         props: {
-
                                                             children: 'Cancel',
                                                             onClick: {
                                                                 action: 'close',

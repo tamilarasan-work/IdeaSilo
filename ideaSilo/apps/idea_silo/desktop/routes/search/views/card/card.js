@@ -4,16 +4,13 @@ module.exports = (path) => ({
     Card: {
         props: {
             styles: {
-                height: '128px',
+                height: '145px',
                 overflow: 'hidden',
-
             },
-
             layout: [
                 {
                     Stack: {
                         props: {
-
                             direction: 'row',
                             justify: 'space-between',
                             layout: [
@@ -41,6 +38,7 @@ module.exports = (path) => ({
                             size: 'sm',
                             styles: {
                                 marginTop: '10px',
+                                marginBottom: '10px',
                                 height: '40px',
                                 overflow: 'hidden',
                                 whiteSpace: 'nowrap',
@@ -62,6 +60,34 @@ module.exports = (path) => ({
                             },
                             contentType: 'html',
                             children: `$data.root.${ path }.description`,
+                        },
+                    },
+                },
+                {
+                    Stack: {
+                        props: {
+                            styles: {
+                                padding: '10px 0', gap: '4px', fontStyle: 'italic',
+                            },
+                            direction: 'row',
+                            layout: [
+                                {
+                                    Text: {
+                                        props: {
+                                            styles: { fontSize: '13px', color: 'gray' },
+                                            children: 'Created by',
+                                        },
+                                    },
+                                },
+                                {
+                                    Text: {
+                                        props: {
+                                            styles: { fontSize: '13px', color: 'gray' },
+                                            children: `$data.root.root.${ path }.creator`,
+                                        },
+                                    },
+                                },
+                            ],
                         },
                     },
                 },

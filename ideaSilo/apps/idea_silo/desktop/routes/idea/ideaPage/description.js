@@ -21,25 +21,107 @@ module.exports = (path) => ({
                         },
                         props: {
                             // direction: 'row',
+                            styles: {
+                                width: '20%',
+
+                            },
                             drillDown: {
                                 fileId: '$data.root.idea.fileId',
                             },
                             layout: [
                                 {
-                                    Text: {
-
-                                        condition: {
-                                            operator: 'notEmpty',
-                                            values: ['$data.root.fileId'],
-                                        },
+                                    Stack: {
                                         props: {
-                                            styles: {
-                                                fontStyle: 'italic',
-                                            },
-                                            children: 'Attached file ',
+                                            direction: 'row',
+                                            justify: 'space-between',
+                                            styles: { marginTop: '20px' },
+                                            layout: [
+                                                {
+                                                    Text: {
+
+                                                        condition: {
+                                                            operator: 'notEmpty',
+                                                            values: ['$data.root.root.fileId'],
+                                                        },
+                                                        props: {
+                                                            styles: {
+                                                                fontStyle: 'italic',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                            },
+                                                            children: 'Attached file ',
+                                                        },
+                                                    },
+                                                },
+                                                {
+                                                    TextButton: {
+                                                        condition: {
+                                                            operator: 'notEmpty',
+                                                            values: ['$data.root.root.fileId'],
+                                                        },
+                                                        props: {
+                                                            styles: {},
+                                                            icon: 'trash',
+                                                            color: 'danger',
+                                                            size: 'medium',
+                                                            children: '',
+                                                            onClick: {
+                                                                action: 'api',
+                                                                arguments: {
+                                                                    request: {
+                                                                        url: 'https://api.hub365.work/graph',
+                                                                        method: 'POST',
+                                                                        withCredentials: true,
+                                                                        data: {
+                                                                            model: '65fbf5c2f7b0893c2aee9031',
+                                                                            type: 'mutation',
+                                                                            mutation: 'Update',
+                                                                            arguments: {
+                                                                                _id: '$data.root.root.root.idea._id',
+                                                                                fileName: '',
+                                                                                fileId: '',
+                                                                            },
+                                                                        },
+                                                                    },
+                                                                    onSuccess: [
+                                                                        {
+                                                                            action: 'rerender',
+                                                                            arguments: {
+                                                                                name: 'attachedFile',
+                                                                                definition: {
+                                                                                    props: {
+                                                                                        drillDown: {
+                                                                                            fileId: '',
+                                                                                        },
+                                                                                    },
+                                                                                },
+                                                                            },
+                                                                        },
+                                                                        {
+                                                                            action: 'rerender',
+                                                                            arguments: {
+                                                                                name: 'attachButton',
+                                                                                definition: {
+                                                                                    props: {
+                                                                                        drillDown: {
+                                                                                            fileId: '',
+                                                                                        },
+                                                                                    },
+                                                                                },
+                                                                            },
+                                                                        },
+
+                                                                    ],
+                                                                },
+                                                            },
+                                                        },
+                                                    },
+                                                },
+                                            ],
                                         },
                                     },
                                 },
+
                                 // {
                                 //     Image: {
                                 //         props: {
@@ -56,7 +138,7 @@ module.exports = (path) => ({
                                         },
                                         props: {
                                             styles: {
-                                                width: '12%',
+                                                // width: '12%',
                                                 // fontSize: '13px',
                                                 // color: '#365DF9',
                                                 // textDecoration: 'underline',
@@ -66,7 +148,7 @@ module.exports = (path) => ({
                                                 {
                                                     Image: {
                                                         props: {
-                                                            styles: { size: 200 },
+                                                            // styles: { size: 200 },
                                                             src: 'https://files.hub365.work/thumbnail/`$data.root.root.fileId`?size=40',
                                                         },
                                                     },
