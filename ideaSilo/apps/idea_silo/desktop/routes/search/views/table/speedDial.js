@@ -3,6 +3,12 @@ const forms = require('../../../../forms');
 module.exports = (path, index) => ({
     SpeedDial: {
         props: {
+            popperStyles: {
+                minWidth: '200px',
+                '> ul': {
+                    width: '130px',
+                },
+            },
             moreSize: 1,
             list: [
                 {
